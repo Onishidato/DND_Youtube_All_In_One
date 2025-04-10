@@ -1,38 +1,38 @@
-# Obsidian Youtube All In One
+# DND YouTube All In One
 
-An Obsidian plugin that generates AI-powered summaries of YouTube videos directly in your notes, with an integrated media player for enhanced video analysis and note-taking.
+An advanced Obsidian plugin that transforms YouTube videos into comprehensive AI-generated notes, featuring an integrated media player and smart timestamp management for enhanced video analysis and note-taking.
 
-![Demo](assets/demo.gif)
+
 
 ## Features
 
 ### Core Functionality
-- 🎥 Extract transcripts from YouTube videos
-- 🧠 Generate comprehensive summaries using Gemini AI or Grok
+- 🎥 Extract and analyze YouTube video transcripts
+- 🧠 Generate intelligent summaries using Gemini AI or Grok
 - 📝 Create structured notes with key points and technical terms
 - 🔍 Automatically extract and format important timestamps
-- 🎬 Integrated media player for watching videos while taking notes
+- 🎬 Integrated media player for seamless video watching while taking notes
 
 ### Advanced Features
-- 📺 Analyze videos without captions via metadata or multimodal AI
-- 🤖 Support for multiple AI providers (Gemini and Grok)
-- 📋 Customizable summary formats (Standard, Detailed, Bullet, Chapters)
-- 📊 Intelligent extraction of key timestamps
-- 🔄 Mini-player that stays visible as you navigate between notes
-- ⌨️ Keyboard shortcuts for controlling video playback
-- 📌 One-click timestamp insertion at current video position
-- 📁 Intelligent file organization with customizable templates
+- 📺 Smart analysis for videos without captions via metadata or multimodal AI
+- 🤖 Multi-provider AI support (Gemini and Grok) with customizable settings
+- 📋 Flexible summary formats to match your note-taking style
+- 📊 Intelligent extraction of key timestamps with clickable navigation
+- 🔄 Convenient mini-player that stays visible as you navigate between notes
+- ⌨️ Keyboard shortcuts for efficient video control
+- 📌 One-click timestamp insertion at your current video position
+- 📁 Smart file organization with customizable templates and folder structures
 
 ## Installation
 
 ### Method 1: From Obsidian Community Plugins
 1. Open Obsidian Settings
 2. Go to "Community Plugins" and disable Safe Mode
-3. Click "Browse" and search for "YouTube Video Summarizer"
+3. Click "Browse" and search for "DND YouTube All In One"
 4. Install and enable the plugin
 
 ### Method 2: Manual Installation
-1. Download the latest release from the [GitHub repository](https://github.com/yourusername/obsidian-yt-video-summarizer/releases)
+1. Download the latest release from the [GitHub repository](https://github.com/yourusername/DND_Youtube_All_In_One/releases)
 2. Extract the zip file into your Obsidian vault's `.obsidian/plugins/` directory
 3. Enable the plugin in Obsidian settings under "Community Plugins"
 
@@ -42,14 +42,14 @@ An Obsidian plugin that generates AI-powered summaries of YouTube videos directl
 - One of the following API keys:
   - Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
   - Grok API key ([Get one here](https://www.grok.com/))
-- Optional: YouTube Data API key for enhanced metadata retrieval ([Get one here](https://console.cloud.google.com/apis/library/youtube.googleapis.com))
+- Optional: YouTube Data API key for enhanced metadata retrieval
 
 ## Setup and Configuration
 
 ### AI Provider Settings
 1. Open plugin settings
 2. Choose your preferred AI provider (Gemini or Grok)
-3. Enter the appropriate API key
+3. Enter your API key
 4. Select your preferred model:
    - For text-only analysis: `gemini-pro` or `grok-1.5-pro`
    - For multimodal analysis: `gemini-1.5-pro-vision` or `grok-1.5-vision`
@@ -80,19 +80,18 @@ The plugin includes an embedded media player that appears in notes with a `media
 
 2. **Playback Controls**:
    - Seek Seconds: How many seconds to jump when using seek controls
-   - Display Progress Bar: Show/hide the video progress bar
-   - Progress Bar Color: Customize the color of the progress bar
-   - Display Timestamp: Show/hide the current time and duration
+   - Progress Bar: Show/hide and customize the video progress bar
+   - Timestamp Display: Show/hide the current time and duration
 
 3. **Timestamp Settings**:
-   - Timestamp Template: Format for inserting timestamps (`{ts}` for timestamp, `{link}` for URL)
+   - Timestamp Template: Format for inserting timestamps
    - Timestamp Offset: Subtract seconds from current time (useful for reaction time)
-   - Pause on Timestamp Insert: Automatically pause video when inserting a timestamp
+   - Auto-pause: Configure if video should pause when inserting a timestamp
 
 4. **Mini Player Settings**:
    - Enable Mini Player: Allow videos to be detached into floating mini player
-   - Remember Mini Player Position: Save position between sessions
-   - Enable Keyboard Shortcuts: Use keyboard to control playback
+   - Remember Position: Save mini player position between sessions
+   - Keyboard Shortcuts: Use keyboard to control playback
 
 ### File Organization Settings
 Customize how and where your video summary notes are saved:
@@ -102,24 +101,25 @@ Customize how and where your video summary notes are saved:
    - `{{title}}`: Video title
    - `{{videoId}}`: YouTube video ID
    - `{{date}}`: Current date
+3. Folder Structure: Organize notes in a hierarchical structure
 
 ## Usage
 
 ### Summarizing a YouTube Video
 
-#### Method 1: Command Palette
-1. Open the command palette (`Ctrl/Cmd + P`)
-2. Search for "Summarize YouTube Video"
-3. Paste the YouTube URL when prompted
+#### Method 1: From Clipboard
+1. Copy a YouTube URL to your clipboard
+2. Open the command palette (`Ctrl/Cmd + P`)
+3. Run "Summarize YouTube URL from clipboard"
 4. Wait for the summary to be generated
 
-#### Method 2: From Selected Text
-1. Paste a YouTube URL in your note
-2. Select the URL text
-3. Open the command palette and run "Summarize YouTube Video"
-4. The summary will replace the selected URL
+#### Method 2: Manual Input
+1. Open the command palette (`Ctrl/Cmd + P`)
+2. Run "Summarize YouTube URL (input)"
+3. Paste or type the YouTube URL when prompted
+4. Wait for the summary to be generated
 
-### Watching Videos in Notes
+### Working with the Media Player
 
 Any note with a YouTube URL in its frontmatter will automatically display the embedded player:
 
@@ -130,43 +130,23 @@ media_link: https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
 #### Player Controls
-- Play/Pause: Click the play button or use space key
+- Play/Pause: Click the play button or use the space key
 - Seek Forward/Backward: Use arrow buttons or keyboard shortcuts
-- Speed Control: Adjust playback speed with the speed controls
+- Speed Control: Adjust playback speed with the controls
 - Full Screen: Click the expand button
 
 #### Working with Timestamps
 1. Position the video at the desired point
 2. Use the command palette to run "Insert Video Timestamp"
 3. A formatted timestamp will be inserted at your cursor position
-4. Click on any timestamp to jump to that position in the video
+4. Click on any timestamp in your notes to jump to that position in the video
 
 #### Mini Player Mode
 1. Open a note with an embedded video
-2. Use the command palette to run "Toggle Mini Player"
+2. Use the command palette to run "Open mini player for current note"
 3. The video will detach into a floating window
 4. Drag to reposition or resize
-5. Close using the X button or "Close Mini Player" command
-
-## Output Formats
-
-### Standard Format
-The default summary format includes:
-- Video title and thumbnail
-- Author and channel link
-- Comprehensive summary
-- Key points and insights
-- Technical terms with explanations
-- Conclusion
-
-### Bullet Format
-Presents information in an easy-to-scan bullet point format
-
-### Chapters Format
-Structures the summary around key timestamps, creating a chapter-based overview
-
-### Detailed Format
-Provides the most comprehensive analysis with extended explanations
+5. Close using the X button or "Toggle mini player visibility" command
 
 ## Keyboard Shortcuts
 
@@ -175,9 +155,9 @@ Provides the most comprehensive analysis with extended explanations
 - **Right Arrow**: Seek forward
 - **Up Arrow**: Increase playback speed
 - **Down Arrow**: Decrease playback speed
-- **T**: Insert timestamp at current position
+- **T**: Insert timestamp at current position (when enabled)
 - **Esc**: Exit fullscreen mode
-- **M**: Toggle mini player
+- **M**: Toggle mini player (when enabled)
 
 ## Troubleshooting
 
@@ -196,13 +176,19 @@ Provides the most comprehensive analysis with extended explanations
    - Long videos may take more time to process
    - Consider using a model with faster inference time
 
-### Reporting Issues
-If you encounter any bugs or have feature requests, please submit an issue on the [GitHub repository](https://github.com/yourusername/obsidian-yt-video-summarizer/issues).
+4. **Mini player not responding**:
+   - Try closing and reopening the mini player
+   - Check that keyboard shortcuts are enabled in settings
+
+### Performance Optimization
+- Enable "Unload hidden players" in settings to reduce resource usage
+- Use cache settings to optimize repeated video analyses
+- Close mini player when not in use
 
 ## Privacy and Data Usage
 
 This plugin:
-- Does not collect or store your data
+- Does not collect or store your personal data
 - Sends video transcripts to your chosen AI provider (Gemini or Grok)
 - Uses your API key only for generating summaries
 - Stores settings and API keys locally in your vault
@@ -215,6 +201,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- Inspired by the original plugin from @mbramani
 - Uses React for the media player interface
 - Powered by Gemini AI and Grok for text generation
+- Thanks to the Obsidian community for feedback and support
