@@ -1,0 +1,524 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+
+/* Layout and Structure */
+.yt-summarizer {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.yt-summarizer__input {
+	width: 100%;
+	margin-bottom: 1em;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.yt-summarizer__actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+/* Buttons */
+.yt-summarizer__button {
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.yt-summarizer__button--primary {
+	background-color: var(--interactive-accent) !important;
+}
+
+.yt-summarizer__button--danger {
+	background-color: var(--text-error) !important;
+}
+
+/* Settings */
+.yt-summarizer-settings {
+	padding: 1em;
+}
+
+.yt-summarizer-settings__textarea {
+	width: 100%;
+	min-height: 150px;
+	font-family: var(--font-monospace);
+}
+
+/* Modal */
+.yt-summarizer-modal {
+	padding: 1.5em;
+}
+
+.yt-summarizer-modal__title {
+	margin-bottom: 1em;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+/* Media Notes Styles */
+.media-notes-container {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.youtube-iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.media-top-container {
+	height: 100%;
+	width: 100%;
+}
+
+.media-container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	max-width: var(--file-line-width);
+	display: block;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 2100px) {
+	.media-container {
+		max-width: 950px;
+	}
+}
+
+/* Edit mode vertical layout */
+.media-container-parent-vertical .markdown-source-view {
+	flex-direction: row !important;
+}
+
+/* Read mode vertical layout */
+.media-container-parent-vertical .markdown-reading-view {
+	flex-direction: row !important;
+	display: flex !important;
+}
+
+.media-container-parent-vertical .media-notes-container {
+	height: 100%;
+}
+
+.media-container-parent-vertical .media-container {
+	margin: auto;
+	width: 100%;
+	max-width: none;
+}
+
+.media-container-parent-vertical .youtube-iframe {
+	max-width: none;
+}
+
+.media-container:hover .progress-bar-container {
+	display: none;
+}
+
+.progress-bar-container {
+	position: absolute;
+	bottom: 0;
+	margin: 0 auto;
+	width: 100%;
+	height: 3px;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Make sure the player is visible in both modes */
+.markdown-reading-view .media-notes-container,
+.markdown-source-view .media-notes-container {
+	display: block !important;
+	z-index: 1;
+}
+
+.timestamp {
+	position: absolute;
+	bottom: 7px;
+	display: flex;
+	margin: 0 8px;
+	justify-content: start;
+	width: 100%;
+	opacity: 1;
+}
+
+.timestamp-inner {
+	padding: 0 6px;
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.8);
+	border-radius: 7px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.progress-bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+}
+
+.hidden {
+	opacity: 0;
+	transition: opacity 0.2s ease-out;
+}
+
+.seek-backwards {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 33.3333%;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.seek-forwards {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 33.3333%;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.seek-icon {
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+}
+
+.playpause-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80px;
+	height: 80px;
+}
+
+.play-icon,
+.pause-icon {
+	width: 80px;
+	height: 80px;
+	background-size: contain;
+	background-color: rgba(0, 0, 0, 1);
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.speed-icon {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-size: contain;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	border-radius: 25px;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 15px;
+	transition: opacity 250ms;
+}
+
+/* Animation classes for transitions */
+.speed-icon-enter,
+.speed-icon-exit-done {
+	opacity: 0;
+}
+.speed-icon-enter-active {
+	opacity: 1;
+}
+.speed-icon-enter-done {
+	opacity: 0;
+}
+.speed-icon-exit {
+	opacity: 0;
+}
+.speed-icon-exit-active {
+	opacity: 0;
+}
+
+@keyframes fadeInOut {
+	0%,
+	100% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.3);
+	}
+}
+
+.playpause-icon-enter {
+	opacity: 0;
+	transform: scale(1);
+}
+.playpause-icon-enter-active {
+	animation: fadeInOut 500ms forwards;
+}
+.playpause-icon-enter-done {
+	opacity: 0;
+}
+.playpause-icon-exit-done,
+.playpause-icon-exit-active {
+	opacity: 0;
+}
+
+.seek-icon-enter,
+.seek-icon-exit-done {
+	opacity: 0;
+}
+.seek-icon-enter-active {
+	opacity: 1;
+}
+.seek-icon-enter-done {
+	opacity: 0;
+	transition: opacity 200ms;
+}
+.seek-icon-exit {
+	opacity: 0;
+}
+.seek-icon-exit-active {
+	opacity: 0;
+	transition: opacity 200ms;
+}
+
+/* Arrow styles */
+.next {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+}
+.back {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+	transform: rotate(180deg);
+}
+
+/* Mini-player styles */
+.mini-player-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 180px;
+  z-index: 1000;
+  background-color: var(--background-primary);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  resize: both;
+  min-width: 200px;
+  min-height: 120px;
+  max-width: 500px;
+  max-height: 300px;
+}
+
+/* Add styles for mini player resizing */
+.mini-player-container {
+  resize: both !important;
+  min-width: 240px !important;
+  min-height: 180px !important;
+  max-width: 800px !important;
+  max-height: 600px !important;
+  overflow: hidden !important;
+}
+
+.mini-player-container:hover::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nwse-resize;
+  background-color: var(--background-modifier-hover);
+  opacity: 0.7;
+  border-radius: 2px;
+}
+
+.mini-player-content {
+  overflow: hidden !important;
+}
+
+.mini-player-container iframe {
+  background-color: #000;
+}
+
+.mini-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--background-secondary);
+  cursor: move;
+  user-select: none;
+}
+
+.mini-player-title {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.mini-player-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.mini-player-control {
+  padding: 3px;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--text-normal);
+}
+
+.mini-player-control:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.mini-player-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Make mini-player draggable */
+.mini-player-dragging {
+  transition: none !important;
+  opacity: 0.8;
+}
+
+/* Animation for mini-player open/close */
+.mini-player-enter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.mini-player-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.mini-player-exit {
+  opacity: 1;
+}
+
+.mini-player-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* YouTube React Player Styles */
+.youtube-player {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+}
+
+.youtube-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Ensure the video container takes the full space */
+.media-container .youtube-player {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0;
+}
+
+/* Apply same styling to the YouTube embed as we did for iframes */
+.mini-player-content .youtube-player {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #000;
+}
+
+/* Shared styles for both media player and mini-player */
+.media-player-container, .mini-player-container {
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-player-header, .mini-player-header {
+  padding: 8px;
+  background-color: var(--background-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.media-player-title, .mini-player-title {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.media-player-controls, .mini-player-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.media-player-button, .mini-player-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  color: var(--text-normal);
+}
+
+.media-player-button:hover, .mini-player-button:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.media-player-content, .mini-player-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Make the media player content fill remaining space */
+.media-player-content {
+  height: calc(100% - 32px); /* Subtract header height */
+}

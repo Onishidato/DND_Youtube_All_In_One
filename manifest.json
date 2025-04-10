@@ -1,0 +1,10 @@
+{
+	"id": "dnd-group-all",
+	"name": "DND Group Youtube All In One",
+	"minAppVersion": "0.15.0",
+	"version": "1.0.0",
+	"description": "Summarize YouTube videos using Gemini AI. Extract transcripts, generate summaries, and create structured notes.",
+	"author": "Onishidato",
+	"authorUrl": "https://github.com/onishidato",
+	"isDesktopOnly": false
+}
