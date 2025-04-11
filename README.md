@@ -2,8 +2,6 @@
 
 An advanced Obsidian plugin that transforms YouTube videos into comprehensive AI-generated notes, featuring an integrated media player and smart timestamp management for enhanced video analysis and note-taking.
 
-
-
 ## Features
 
 ### Core Functionality
@@ -25,31 +23,22 @@ An advanced Obsidian plugin that transforms YouTube videos into comprehensive AI
 
 ## Installation
 
-### Method 1: From Obsidian Community Plugins
-1. Open Obsidian Settings
-2. Go to "Community Plugins" and disable Safe Mode
-3. Click "Browse" and search for "DND YouTube All In One"
-4. Install and enable the plugin
-
-### Method 2: Manual Installation
-1. Download the latest release from the [GitHub repository](https://github.com/yourusername/DND_Youtube_All_In_One/releases)
-2. Extract the zip file into your Obsidian vault's `.obsidian/plugins/` directory
-3. Enable the plugin in Obsidian settings under "Community Plugins"
+1. Download the plugin from the Obsidian community plugins directory.
+2. Enable the plugin in Obsidian by navigating to `Settings > Community Plugins`.
+3. Configure the plugin settings as described below.
 
 ## Requirements
 
-- Obsidian v0.15.0+
-- One of the following API keys:
-  - Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
-  - Grok API key ([Get one here](https://www.grok.com/))
-- Optional: YouTube Data API key for enhanced metadata retrieval
+- Obsidian (latest version recommended)
+- API keys for Gemini AI or Grok (depending on your chosen provider)
+- YouTube API key for fetching video metadata and transcripts
 
 ## Setup and Configuration
 
 ### AI Provider Settings
-1. Open plugin settings
-2. Choose your preferred AI provider (Gemini or Grok)
-3. Enter your API key
+1. Open plugin settings.
+2. Choose your preferred AI provider (Gemini or Grok).
+3. Enter your API key.
 4. Select your preferred model:
    - For text-only analysis: `gemini-pro` or `grok-1.5-pro`
    - For multimodal analysis: `gemini-1.5-pro-vision` or `grok-1.5-vision`
@@ -65,125 +54,70 @@ This plugin offers multiple ways to analyze YouTube videos:
 - **Multimodal Analysis**: Uses vision-capable AI models to directly analyze video content
 
 Configure how videos without captions are handled:
-1. Open plugin settings
-2. Go to "Video Analysis Settings"
-3. Choose your preferred analysis method
-4. Enable or disable fallback to metadata analysis
+1. Open plugin settings.
+2. Go to "Video Analysis Settings".
+3. Choose your preferred analysis method.
+4. Enable or disable fallback to metadata analysis.
 
 ### Media Player Settings
-The plugin includes an embedded media player that appears in notes with a `media_link` frontmatter:
-
-1. **Layout Settings**:
-   - Vertical Player Height: Adjust the height of the player in vertical mode
-   - Horizontal Player Width: Adjust the width of the player in horizontal mode
-   - Toggle between layouts with the command palette
-
-2. **Playback Controls**:
-   - Seek Seconds: How many seconds to jump when using seek controls
-   - Progress Bar: Show/hide and customize the video progress bar
-   - Timestamp Display: Show/hide the current time and duration
-
-3. **Timestamp Settings**:
-   - Timestamp Template: Format for inserting timestamps
-   - Timestamp Offset: Subtract seconds from current time (useful for reaction time)
-   - Auto-pause: Configure if video should pause when inserting a timestamp
-
-4. **Mini Player Settings**:
-   - Enable Mini Player: Allow videos to be detached into floating mini player
-   - Remember Position: Save mini player position between sessions
-   - Keyboard Shortcuts: Use keyboard to control playback
+1. Enable or disable the integrated media player.
+2. Adjust the mini-player's position and size.
+3. Configure keyboard shortcuts for video control.
 
 ### File Organization Settings
 Customize how and where your video summary notes are saved:
 
-1. Default Folder: Specify where to save video summary notes
+1. Default Folder: Specify where to save video summary notes.
 2. Filename Template: Customize filenames using variables:
    - `{{title}}`: Video title
    - `{{videoId}}`: YouTube video ID
    - `{{date}}`: Current date
-3. Folder Structure: Organize notes in a hierarchical structure
+3. Folder Structure: Organize notes in a hierarchical structure.
+
+### Managing Prompts Manually
+
+This plugin allows you to customize and manage the prompts sent to the AI for generating summaries. Follow these steps to manually manage your prompts:
+
+1. Open the plugin settings.
+2. Navigate to the "Prompt Management" section.
+3. Edit the default prompts or create new ones:
+   - Use placeholders like `{{transcript}}`, `{{title}}`, and `{{timestamps}}` to dynamically insert video data.
+   - Example prompt: "Summarize the following YouTube video transcript: {{transcript}}."
+4. Save your changes to apply the custom prompts.
+
+By customizing prompts, you can tailor the AI's output to better suit your needs.
 
 ## Usage
 
 ### Summarizing a YouTube Video
-
-#### Method 1: From Clipboard
-1. Copy a YouTube URL to your clipboard
-2. Open the command palette (`Ctrl/Cmd + P`)
-3. Run "Summarize YouTube URL from clipboard"
-4. Wait for the summary to be generated
-
-#### Method 2: Manual Input
-1. Open the command palette (`Ctrl/Cmd + P`)
-2. Run "Summarize YouTube URL (input)"
-3. Paste or type the YouTube URL when prompted
-4. Wait for the summary to be generated
+1. Open a Markdown file in Obsidian.
+2. Use the command palette to launch the "Summarize YouTube Video" command.
+3. Enter the YouTube video URL.
+4. Choose your preferred summary format and analysis method.
+5. The plugin will generate a summary and insert it into your note.
 
 ### Working with the Media Player
-
-Any note with a YouTube URL in its frontmatter will automatically display the embedded player:
-
-```yaml
----
-media_link: https://www.youtube.com/watch?v=VIDEO_ID
----
-```
-
-#### Player Controls
-- Play/Pause: Click the play button or use the space key
-- Seek Forward/Backward: Use arrow buttons or keyboard shortcuts
-- Speed Control: Adjust playback speed with the controls
-- Full Screen: Click the expand button
-
-#### Working with Timestamps
-1. Position the video at the desired point
-2. Use the command palette to run "Insert Video Timestamp"
-3. A formatted timestamp will be inserted at your cursor position
-4. Click on any timestamp in your notes to jump to that position in the video
-
-#### Mini Player Mode
-1. Open a note with an embedded video
-2. Use the command palette to run "Open mini player for current note"
-3. The video will detach into a floating window
-4. Drag to reposition or resize
-5. Close using the X button or "Toggle mini player visibility" command
+1. Open a Markdown file containing a YouTube video link.
+2. The mini-player will appear automatically.
+3. Use the player controls or keyboard shortcuts to navigate the video.
+4. Insert timestamps into your notes with a single click.
 
 ## Keyboard Shortcuts
 
-- **Space**: Play/Pause video
-- **Left Arrow**: Seek backward
-- **Right Arrow**: Seek forward
-- **Up Arrow**: Increase playback speed
-- **Down Arrow**: Decrease playback speed
-- **T**: Insert timestamp at current position (when enabled)
-- **Esc**: Exit fullscreen mode
-- **M**: Toggle mini player (when enabled)
+- `Ctrl+Alt+P`: Play/Pause the video
+- `Ctrl+Alt+Left`: Seek backward
+- `Ctrl+Alt+Right`: Seek forward
+- `Ctrl+Alt+T`: Insert current timestamp
 
 ## Troubleshooting
 
 ### Common Issues
+- **API Key Errors**: Ensure your API keys are correctly entered and have the necessary permissions.
+- **Video Not Found**: Verify the YouTube URL and ensure the video is publicly accessible.
 
-1. **No summary generated**:
-   - Verify your API key is correct
-   - Check if the video has captions available
-   - Enable multimodal analysis for videos without captions
-
-2. **Player not appearing**:
-   - Ensure the note has a `media_link` in the frontmatter
-   - Verify the URL is a valid YouTube link
-
-3. **Slow summaries**:
-   - Long videos may take more time to process
-   - Consider using a model with faster inference time
-
-4. **Mini player not responding**:
-   - Try closing and reopening the mini player
-   - Check that keyboard shortcuts are enabled in settings
-
-### Performance Optimization
-- Enable "Unload hidden players" in settings to reduce resource usage
-- Use cache settings to optimize repeated video analyses
-- Close mini player when not in use
+### Debugging
+- Check the Obsidian console for error messages.
+- Clear the plugin cache if summaries are outdated or incorrect.
 
 ## Privacy and Data Usage
 
