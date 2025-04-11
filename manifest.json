@@ -1,8 +1,8 @@
 {
-	"id": "dnd_youtube_all_in_one",
+	"id": "dnd-youtube-all-in-one",
 	"name": "DND Youtube All In One",
 	"minAppVersion": "0.15.0",
-	"version": "1.0.0",
+	"version": "v1.0.0",
 	"description": "An advanced plugin that transforms YouTube videos into comprehensive AI-generated notes, featuring an integrated media player and smart timestamp management for enhanced video analysis and note-taking.",
 	"author": "Onishidato",
 	"authorUrl": "https://github.com/onishidato",
