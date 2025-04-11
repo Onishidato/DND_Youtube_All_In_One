@@ -1,7 +1,7 @@
 {
-	"name": "dnd-group-all",
+	"name": "dnd-youtube-all-in-one",
 	"version": "1.0.0",
-	"description": "Summarize YouTube videos using Gemini AI. Extract transcripts, generate summaries, and create structured notes.",
+	"description": "An advanced Obsidian plugin that transforms YouTube videos into comprehensive AI-generated notes, featuring an integrated media player and smart timestamp management for enhanced video analysis and note-taking.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
